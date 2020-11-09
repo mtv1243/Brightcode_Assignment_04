@@ -1,0 +1,29 @@
+.loadingLogo {
+    height: 40%;
+    position: absolute;
+    top: 30%;
+    right: 1em;
+    display: none;
+    &--active {
+        display: block;
+        animation: rotation .5s infinite linear;
+        height: 40%;
+        position: absolute;
+        top: 30%;
+        right: 1em;
+    }
+}
+// .loadingLogoActive {
+//     @extend .loadingLogo;
+//     display: block;
+//     animation: rotation .5s infinite linear;
+// }
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
