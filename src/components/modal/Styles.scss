@@ -1,0 +1,43 @@
+@import '../../styles/utils/colors';
+@import '../../styles/utils/breakpoints';
+
+.modal {
+    display: none;
+    @media only screen and (max-width: $mobile) {
+        display: initial;
+        position: absolute;
+        background-color: rgba(0,0,0,.2);
+        width: 100vw;
+        height: 666px;
+        left: 0;
+        top: 0;
+        z-index: 1;
+    }
+    &--modalContent {
+        position: absolute;
+        box-sizing: border-box;
+        background-color: #fff;
+        border-radius: 10px;
+        width: 96%;
+        left: 2%;
+        top: 23%;
+        padding: 2% 15%;
+        &--title {
+            color: $barney;
+            margin: .5em 0;
+        }
+        &--closeModal {
+            position: absolute;
+            top: 7%;
+            right: 5%;
+            cursor: pointer;
+        }
+        &--caret {
+            color: #fff;
+            position: absolute;
+            top: -16px;
+            right: 3%;
+            font-size: 30px;
+        }
+    }
+}

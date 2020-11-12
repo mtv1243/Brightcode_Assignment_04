@@ -12,6 +12,21 @@
         color: $morning-sky;
         font-weight: 600;
         font-size: 1.5em;
+        text-align: left;
+        @media only screen and (max-width: $mobile) {
+            margin: 10px auto;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 1.2em;
+        }
+        &--icon {
+            display: none;
+            @media only screen and (max-width: $mobile) {
+                display: inline-block;
+            }
+        }
     }
 
     &--subHeader{
@@ -53,6 +68,7 @@
         }
         @media only screen and (max-width: $mobile) {
             grid-gap: 10px 0px;
+            padding: 0;
         }
     }
 

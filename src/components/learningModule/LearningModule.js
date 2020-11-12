@@ -2,6 +2,10 @@ import React from 'react';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import ProgressBar from '../progressBar/ProgressBar';
+import Modal from '../modal/Modal';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './Styles.scss';
 
@@ -9,6 +13,7 @@ const LearningModule = ({setGameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
   const [quizData, setQuizData] = React.useState({});
   const [loadingActive, setLoadingActive] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
   let currentQuestion = quizData.questionArr ? quizData.questionArr[currentQuestionId]: {};
   React.useEffect(()=>{
     getQuizData();
@@ -47,14 +52,18 @@ const LearningModule = ({setGameStatus}) => {
     <div className="learningModule">
       { currentQuestion.title &&
         <>
-          <ProgressBar totalQuestions={quizData.totalQuestions} id={currentQuestion.id} />
+          <ProgressBar totalQuestions={ quizData.totalQuestions } id={ currentQuestion.id } />
           <div className="learningModule--header">
             <div className="learningModule--title">
               { currentQuestion.title }
+              <FontAwesomeIcon className="learningModule--title--icon" icon={ faInfoCircle } onClick={ (e)=>{setShowModal(true)} } />
             </div>
             <div className="learningModule--subHeader">
               { currentQuestion.additionalInfo }
             </div>
+            { showModal &&
+              <Modal setShowModal={ setShowModal } modalMessage={ currentQuestion.additionalInfo } />
+            }
           </div>
 
           <div className="learningModule--answerArea">
